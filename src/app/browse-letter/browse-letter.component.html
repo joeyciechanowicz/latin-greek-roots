@@ -1,0 +1,37 @@
+<mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="roots">
+        <mat-header-cell *matHeaderCellDef> Roots </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <i>{{ element.roots | concat:', '}}</i>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="meaning">
+        <mat-header-cell *matHeaderCellDef> Meaning </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            {{ element.meaning }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="originLanguage">
+        <mat-header-cell *matHeaderCellDef> Origin Language </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            {{ element.originLanguage }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="examples">
+        <mat-header-cell *matHeaderCellDef> Examples </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <i>{{ element.examples | concat:', '}}</i>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator
+               [pageSize]="5"
+               [pageSizeOptions]="[5, 10, 20, 100]">
+</mat-paginator>
