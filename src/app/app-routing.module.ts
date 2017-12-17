@@ -5,7 +5,7 @@ import {TestComponent} from './test/test.component';
 import {SearchComponent} from './search/search.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/browse', pathMatch: 'full'},
+    { path: '', redirectTo: 'browse/a', pathMatch: 'full'},
     { path: 'browse/:letter', component: BrowseLetterComponent},
     { path: 'search/:searchString', component: SearchComponent},
     { path: 'test', component: TestComponent}
