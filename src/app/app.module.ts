@@ -13,8 +13,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowseLetterComponent } from './browse-letter/browse-letter.component';
 import { SearchComponent } from './search/search.component';
 import { TestComponent } from './test/test.component';
-import { DataService } from './data.service';
-import { ConcatPipe } from './concat.pipe';
+import { DataService } from './shared/data/data.service';
+import { ConcatPipe } from './shared/pipes/concat.pipe';
+import {LanguagePipe} from './shared/pipes/language.pipe';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { ConcatPipe } from './concat.pipe';
         BrowseLetterComponent,
         SearchComponent,
         TestComponent,
-        ConcatPipe
+        ConcatPipe,
+        LanguagePipe
     ],
     imports: [
         BrowserModule,

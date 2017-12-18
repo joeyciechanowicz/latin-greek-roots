@@ -2,28 +2,28 @@
     <ng-container matColumnDef="roots">
         <mat-header-cell *matHeaderCellDef> Roots </mat-header-cell>
         <mat-cell *matCellDef="let element">
-            <i>{{ element.roots | concat:', '}}</i>
+            <i>{{ element.r | concat:', '}}</i>
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="meaning">
         <mat-header-cell *matHeaderCellDef> Meaning </mat-header-cell>
         <mat-cell *matCellDef="let element">
-            {{ element.meaning }}
+            {{ element.m }}
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="originLanguage">
         <mat-header-cell *matHeaderCellDef> Origin Language </mat-header-cell>
         <mat-cell *matCellDef="let element">
-            {{ element.originLanguage }}
+            {{ element.o | language}}
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="examples">
         <mat-header-cell *matHeaderCellDef> Examples </mat-header-cell>
         <mat-cell *matCellDef="let element">
-            <i>{{ element.examples | concat:', '}}</i>
+            <i>{{ element.e | concat:', '}}</i>
         </mat-cell>
     </ng-container>
 

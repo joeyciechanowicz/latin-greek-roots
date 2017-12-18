@@ -1,9 +1,14 @@
 <mat-toolbar color="primary">
 
-    <!--<mat-form-field floatLabel="never" color="accent">-->
-        <!--<input type="text" matInput [formControl]="searchCtrl" aria-label="Search string" placeholder="Search">-->
-    <!--</mat-form-field>-->
-    <!--<mat-icon>search</mat-icon>-->
+    <mat-form-field floatLabel="never" color="accent">
+        <input type="text" matInput [formControl]="searchCtrl" [matAutocomplete]="auto" aria-label="Search"
+               placeholder="Search">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayItem" (optionSelected)="navigateToSpecificRoot($event)">
+            <mat-option *ngFor="let item of filteredRoots | async" [value]="item">
+                {{ item.root.r | concat:', ' }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
 
     <mat-form-field floatLabel="never" color="accent">
         <mat-select placeholder="Browse by letter" aria-label="Browse by letter" [formControl]="browseCtrl">

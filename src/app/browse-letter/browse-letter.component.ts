@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, OnDestroy, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {DataService} from '../data.service';
-import {Root} from '../roots';
+import {DataService, Root} from '../shared/data/data.service';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {Subscription} from 'rxjs/Subscription';
 
