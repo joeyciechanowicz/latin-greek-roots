@@ -1,4 +1,13 @@
 (function() {
+    /*
+    Run on:
+
+    https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/A-G
+    https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/H-O
+    https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/P-Z
+     */
+
+
     // Add map in to NodeList for convenience
     NodeList.prototype.map = function(cb) {
       return Array.from(this).map(cb);
