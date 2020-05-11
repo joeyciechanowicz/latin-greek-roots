@@ -1,0 +1,7 @@
+vanilla-static/certs/
+
+dist/
+.idea/
+.DS_Store
+node_modules
+

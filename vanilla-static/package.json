@@ -1,0 +1,36 @@
+{
+  "name": "vanilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e html,mjs --ignore dist/ --exec \"time ./build.sh\" src/index.html",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "type": "module",
+  "browserslist": [
+    "last 2 versions",
+    "not IE 11",
+    "not IE_Mob 11"
+  ],
+  "keywords": [],
+  "author": "Joey Ciechanowicz",
+  "license": "MIT",
+  "dependencies": {
+    "@ajusa/lit": "^1.1.0",
+    "data": "file:../data"
+  },
+  "devDependencies": {
+    "@commonshost/server": "^6.16.0",
+    "connect-gzip-static": "^2.1.1",
+    "express": "^4.17.1",
+    "htmlnano": "^0.2.5",
+    "jest": "^26.0.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.3",
+    "posthtml": "^0.13.0",
+    "posthtml-cache": "^0.3.0",
+    "terser": "^4.6.13"
+  }
+}
