@@ -4,6 +4,8 @@ const {promisify} = require('util');
 const {JSDOM} = require('jsdom');
 const writeFile = promisify(fs.writeFile);
 
+const paginationAmount = 50;
+
 const columnNames = [
 	'roots',
 	'meaning',
@@ -104,8 +106,6 @@ async function run() {
 
 	await serialize(trie, 'trie.json');
 	await serialize(compressRows(rows), 'rows.json');
-
-	// return trie;
 
 }
 

@@ -1,34 +1,50 @@
-export function createStore(reducer, initialState = {}) {
-	let state = initialState;
-	const listeners = [];
+import {createStore} from './redux.mjs';
 
-	const getState = () => state;
+export const actionTypes = {
+	rowsLoaded: 'rows-loaded',
+	rowsLoading: 'rows-loading',
+	rowsLoadingFailed: 'rows-loading-failed'
+};
 
-	const dispatch = (action) => {
-		if (typeof action === 'function') {
-			return action(this.getState, this.dispatch);
-		}
+export function loadRows() {
+	return (getState, dispatch) => {
+		dispatch({type: actionTypes.rowsLoading});
 
-		state = reducer(state, action);
-
-		for (const listener of listeners) {
-			listener(getState);
-		}
-	};
-
-	const subscribe = (listener) => {
-		listeners.push(listener);
-		return () => {
-			const index = listeners.indexOf(listener);
-			listeners.splice(index, 1);
-		}
-	};
-
-	dispatch({});
-
-	return {
-		getState,
-		dispatch,
-		subscribe
+		return fetch('/rows.json')
+			.then(data => data.json())
+			.then(rows => dispatch({type: actionTypes.rowsLoaded, payload: rows}))
+			.catch(error => dispatch({type: actionTypes.rowsLoadingFailed, payload: error}));
 	};
 }
+
+export function reducer(state, action) {
+	switch (action.type) {
+		case actionTypes.rowsLoaded:
+			return {
+				...state,
+				rowsLoading: false,
+				rows: action.payload.rows,
+				columnNames: action.payload.columnNames
+			};
+
+		case actionTypes.rowsLoading:
+			return {
+				...state,
+				rowsLoading: true
+			};
+
+		case actionTypes.rowsLoadingFailed:
+			return {
+				...state,
+				rowsLoading: false,
+				rowsLoadingFailed: action.payload
+			};
+
+		default:
+			return state;
+	}
+}
+
+const initialState = {};
+
+export const store = createStore(reducer, initialState);

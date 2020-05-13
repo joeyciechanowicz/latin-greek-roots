@@ -8,12 +8,6 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
-  "type": "module",
-  "browserslist": [
-    "last 2 versions",
-    "not IE 11",
-    "not IE_Mob 11"
-  ],
   "keywords": [],
   "author": "Joey Ciechanowicz",
   "license": "MIT",
@@ -22,7 +16,9 @@
     "data": "file:../data"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.9.6",
     "@commonshost/server": "^6.16.0",
+    "@types/jest": "^25.2.1",
     "connect-gzip-static": "^2.1.1",
     "express": "^4.17.1",
     "htmlnano": "^0.2.5",
@@ -31,6 +27,38 @@
     "nodemon": "^2.0.3",
     "posthtml": "^0.13.0",
     "posthtml-cache": "^0.3.0",
+    "rollup": "^2.10.0",
     "terser": "^4.6.13"
+  },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/*.?(m)js?(x)",
+      "**/?(*.)(spec|test).?(m)js?(x)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "node",
+      "mjs"
+    ],
+    "transform": {
+      "^.+\\.m?js$": "babel-jest"
+    },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
+  },
+  "browserslist": [
+    "last 1 versions",
+    "not IE 11",
+    "not IE_Mob 11"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/env"
+      ]
+    ]
   }
 }

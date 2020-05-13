@@ -5,7 +5,7 @@
 1. Clone the repo
 1. Generate the shared data structures
  ```
- cd data && npm i && ./extract-wikipedia-data.js
+ cd data && npm i && npm start
 ```
 1. Pick one of the implementations and follow the instructions within that directory
 

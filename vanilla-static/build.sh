@@ -10,7 +10,7 @@ fi
 # this is simple, we find all .mjs files (such as src/main.mjs), then we cut off the `src/` portion
 # and then cut off the `.mjs` section
 # then run it through terser to minify it
-find src -name "*.mjs" | cut -c 5- | cut -d '.' -f 1 | xargs -I % sh -c './node_modules/.bin/terser --compress --mangle --output dist/%.mjs src/%.mjs'
+find src -name "*.mjs" -not -name "*.test.mjs" | cut -c 5- | cut -d '.' -f 1 | xargs -I % sh -c './node_modules/.bin/terser --compress --mangle --output dist/%.mjs src/%.mjs'
 
 # copy the css library
 cp ./node_modules/@ajusa/lit/dist/* dist
@@ -23,5 +23,4 @@ cp ../data/trie.* dist
 node ./posthtml.js
 
 # gzip it all the way to 9
-gzip -9 -k -f dist/index.html
-gzip -9 -k -f dist/*.mjs
+gzip -9 -k -f dist/*

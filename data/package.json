@@ -4,7 +4,7 @@
   "description": "",
   "main": "combine-data.sh",
   "scripts": {
-    "test": ""
+    "start": "node extract-wikipedia-data.js"
   },
   "keywords": [],
   "author": "",

@@ -2,24 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfe1e22e-cb7d-4b1b-94af-4d8dc0cfa0b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/jcn7501.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/posthtml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/src/__tests__/store.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/src/main.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/src/rows.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vanilla-static/src/store.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/latin-greek-roots.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/latin-greek-roots.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vanilla-static/src/__tests__/redux.test.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vanilla-static/src/__tests__/store.test.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vanilla-static/src/app.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vanilla-static/src/redux.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vanilla-static/src/renderer.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/combine-data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/extract-data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/extract-data.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/extract-wikipedia-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/extract-wikipedia-data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rows.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/trie.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/vanilla-static/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vanilla-static/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vanilla-static/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/src/__tests__/store.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/vanilla-static/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/src/main.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/vanilla-static/src/main.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/src/rows.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vanilla-static/src/store.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/vanilla-static/src/store.mjs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +47,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="javascript.nodejs.core.library.configured.version" value="13.13.0" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -53,6 +56,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/vanilla-static/node_modules/jest" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -75,12 +79,27 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Jest.store.can retreive state">
+    <configuration name="store.can retreive state" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/vanilla-static/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/vanilla-static" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/vanilla-static/src/__tests__/store.test.mjs" />
+      <test-names>
+        <test-name value="store" />
+        <test-name value="can retreive state" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="extract-wikipedia-data.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/scripts/extract-wikipedia-data.js" working-dir="$PROJECT_DIR$/scripts">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.store.can retreive state" />
         <item itemvalue="Node.js.extract-wikipedia-data.js" />
       </list>
     </recent_temporary>
