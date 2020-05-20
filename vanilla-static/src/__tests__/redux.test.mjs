@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from '../redux.mjs';
+import {createStore, combineReducers} from '../redux.js';
 
 describe('store', () => {
 	let noopReducer;

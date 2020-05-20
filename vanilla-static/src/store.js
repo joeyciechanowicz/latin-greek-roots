@@ -1,4 +1,4 @@
-import {createStore} from './redux.mjs';
+import {createStore} from './redux.js';
 
 export const actionTypes = {
 	rowsLoaded: 'rows-loaded',

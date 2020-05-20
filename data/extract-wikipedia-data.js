@@ -106,6 +106,7 @@ async function run() {
 
 	await serialize(trie, 'trie.json');
 	await serialize(compressRows(rows), 'rows.json');
+	await serialize(rows, 'rows-unminified.json');
 
 }
 

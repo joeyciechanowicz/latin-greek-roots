@@ -1,4 +1,4 @@
-import * as store from '../store.mjs';
+import * as store from '../store.js';
 
 describe('store', () => {
 	let fetchMock;

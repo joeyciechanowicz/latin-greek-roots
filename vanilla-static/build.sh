@@ -10,7 +10,10 @@ fi
 # this is simple, we find all .mjs files (such as src/main.mjs), then we cut off the `src/` portion
 # and then cut off the `.mjs` section
 # then run it through terser to minify it
-find src -name "*.mjs" -not -name "*.test.mjs" | cut -c 5- | cut -d '.' -f 1 | xargs -I % sh -c './node_modules/.bin/terser --compress --mangle --output dist/%.mjs src/%.mjs'
+#find src -name "*.mjs" -not -name "*.test.mjs" | cut -c 5- | cut -d '.' -f 1 | xargs -I % sh -c './node_modules/.bin/terser --compress --mangle --output dist/%.mjs src/%.mjs'
+
+# ooor just use rollup
+./node_modules/.bin/rollup src/main.js --file dist/bundle.js --sourcemap
 
 # copy the css library
 cp ./node_modules/@ajusa/lit/dist/* dist
