@@ -12,8 +12,8 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadRowsAsync());
         dispatch(loadTrieAsync());
+        dispatch(loadRowsAsync());
     });
 
 	return (

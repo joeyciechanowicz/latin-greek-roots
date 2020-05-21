@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {searchAsync} from './rootsSlice';
+import {searchAsync, resetSearch} from './rootsSlice';
 import {RootState} from '../../store';
 
 export function Search() {
@@ -12,7 +12,12 @@ export function Search() {
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
-		dispatch(searchAsync(searchTerm))
+
+		if (searchTerm === '') {
+			dispatch(resetSearch());
+		} else {
+			dispatch(searchAsync(searchTerm))
+		}
 	};
 
 	return (
@@ -26,7 +31,7 @@ export function Search() {
 					</div>
 
 					<div className="1 col">
-						<button className="btn" disabled={loadingTrie} type="submit">Search</button>
+						<button className="btn" disabled={loadingTrie || searching} type="submit">{searching ? 'Searching' : 'Search'}</button>
 					</div>
 				</form>
 			</div>
