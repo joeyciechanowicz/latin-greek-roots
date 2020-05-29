@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
-import {Row} from './rootsSlice';
+import {Row} from './types';
 
 const commaSeparated = (list: string[]) => list.map((item, i) => `${item}${i < list.length - 1 ? ', ' : ''}`);
 

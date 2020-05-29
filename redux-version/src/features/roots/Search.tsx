@@ -1,6 +1,7 @@
 import React, {FormEvent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {searchAsync, resetSearch} from './rootsSlice';
+import {resetSearch} from './actions';
+import {search} from './thunks';
 import {RootState} from '../../store';
 
 export function Search() {
@@ -16,7 +17,7 @@ export function Search() {
 		if (searchTerm === '') {
 			dispatch(resetSearch());
 		} else {
-			dispatch(searchAsync(searchTerm))
+			dispatch(search(searchTerm))
 		}
 	};
 

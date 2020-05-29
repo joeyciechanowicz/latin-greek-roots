@@ -6,14 +6,14 @@ import {Results} from './features/roots/Results';
 
 import './App.css';
 import {useDispatch} from 'react-redux';
-import {loadRowsAsync, loadTrieAsync} from './features/roots/rootsSlice';
+import {loadTrie, loadRows} from './features/roots/thunks';
 
 function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadTrieAsync());
-        dispatch(loadRowsAsync());
+        dispatch(loadTrie());
+        dispatch(loadRows());
     });
 
 	return (

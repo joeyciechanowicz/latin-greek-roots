@@ -2,37 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfe1e22e-cb7d-4b1b-94af-4d8dc0cfa0b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/redux-version/src/features/roots/__tests__/rootsSlice.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux-version/src/features/roots/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux-version/src/features/roots/reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux-version/src/features/roots/thunks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux-version/src/features/roots/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/fixtures/kitchensink/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/fixtures/kitchensink/.env.development" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/fixtures/kitchensink/.env.production" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/fixtures/kitchensink/src/features/env/PublicUrl.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/fixtures/kitchensink/src/features/webpack/LinkedModules.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/fixtures/kitchensink/src/features/webpack/LinkedModules.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/fixtures/kitchensink/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/public/rows.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/public/trie.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/actions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/results.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/serviceWorker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/store.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inferno-js/src/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/Results.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/Results.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/Search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/rootsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/rootsSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/__tests__/rootsSlice.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/rootsSlice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/src/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/store.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
