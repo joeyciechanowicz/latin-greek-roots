@@ -6,7 +6,6 @@ import {
 	LOAD_TRIE_REQUEST,
 	LOAD_TRIE_SUCCESS,
 	RESET_SEARCH,
-	RootsActions,
 	Row,
 	SEARCH_REQUEST,
 	SEARCH_SUCCESS,
@@ -19,15 +18,17 @@ import {
  * from the first function call
  * @param type
  */
-function createActionCreator<TType>(type: TType):
-	<TPayload extends any = undefined>() => [TPayload] extends [undefined]
-		? () => RootsActions
-		: (payload: TPayload) => RootsActions {
-	return <TPayload = undefined>() => {
-		return (payload: TPayload) => ({
+function createActionCreator<TType>(type: TType): <TPayload = undefined>() => (payload?: TPayload) => Action<TType, TPayload> {
+	return <TPayload>() => {
+		return (payload?: TPayload) => ({
 			type, payload
-		});
+		} as Action<TType, TPayload>);
 	};
+}
+
+interface Action<TType, TPayload> {
+	type: TType;
+	payload: TPayload;
 }
 
 export const loadTrieRequest = createActionCreator(LOAD_TRIE_REQUEST)();
@@ -39,6 +40,6 @@ export const loadRowsSuccess = createActionCreator(LOAD_ROWS_SUCCESS)<Row[]>();
 export const loadRowsFailure = createActionCreator(LOAD_ROWS_FAILURE)<string>();
 
 export const searchRequest = createActionCreator(SEARCH_REQUEST)();
-export const searchSuccess = createActionCreator(SEARCH_SUCCESS)<number>();
+export const searchSuccess = createActionCreator(SEARCH_SUCCESS)<number[]>();
 
 export const resetSearch = createActionCreator(RESET_SEARCH)();

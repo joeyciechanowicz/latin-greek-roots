@@ -3,27 +3,29 @@ import {combineReducers} from 'redux';
 import {
 	LOAD_ROWS_FAILURE,
 	LOAD_ROWS_REQUEST,
-	LOAD_ROWS_SUCCESS, LOAD_TRIE_FAILURE,
+	LOAD_ROWS_SUCCESS,
+	LOAD_TRIE_FAILURE,
 	LOAD_TRIE_REQUEST,
 	LOAD_TRIE_SUCCESS,
 	RootsActions,
-	RowsState, SEARCH_REQUEST,
+	RowsState,
+	SEARCH_REQUEST,
 	SEARCH_SUCCESS,
 	TrieState
 } from './types';
 
-const initialTrieState: TrieState = {
+export const initialTrieState: TrieState = {
 	loading: false
 };
 
-const initialRowsState: RowsState = {
+export const initialRowsState: RowsState = {
 	current: [],
 	all: [],
 	loading: false
 };
 
 export const rootsReducer = combineReducers({
-	rows(state: RowsState = initialRowsState, action: RootsActions): RowsState {
+	rows: (state: RowsState = initialRowsState, action: RootsActions): RowsState => {
 		switch (action.type) {
 			case LOAD_ROWS_REQUEST:
 				return {
@@ -52,7 +54,7 @@ export const rootsReducer = combineReducers({
 				return state;
 		}
 	},
-	trie(state: TrieState = initialTrieState, action: RootsActions) {
+	trie: (state: TrieState = initialTrieState, action: RootsActions) => {
 		switch (action.type) {
 			case LOAD_TRIE_REQUEST:
 				return {
@@ -76,7 +78,7 @@ export const rootsReducer = combineReducers({
 				return state;
 		}
 	},
-	searching(state: boolean = false, action: RootsActions) {
+	searching: (state: boolean = false, action: RootsActions) => {
 		switch (action.type) {
 			case SEARCH_REQUEST:
 				return true;

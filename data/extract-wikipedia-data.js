@@ -79,7 +79,7 @@ async function buildSearchIndex(rows) {
 			return node[letter];
 		}, trie);
 
-		if (node._ && !node._.indexOf(index)) {
+		if (node._ && !node._.includes(index)) {
 			node._.push(index);
 		} else {
 			node._ = [index];

@@ -6,11 +6,9 @@ import {Row} from './types';
 const commaSeparated = (list: string[]) => list.map((item, i) => `${item}${i < list.length - 1 ? ', ' : ''}`);
 
 export function Results() {
-	const rows = useSelector((state: RootState) => state.roots.currentRows);
-	const loadingRows = useSelector((state: RootState) => state.roots.loadingRows);
-	const error = useSelector((state: RootState) => state.roots.error);
+	const {current, loading, error} = useSelector((state: RootState) => state.roots.rows);
 
-	if (loadingRows) {
+	if (loading) {
 		return (
 			<h1>Loading...</h1>
 		);
@@ -27,11 +25,11 @@ export function Results() {
 		);
 	}
 
-	const trRows = rows.length === 0 ?
+	const trRows = current.length === 0 ?
 		<tr>
-			<td colSpan={5}>No results</td>
+			<td colSpan={6}>No results</td>
 		</tr>
-		: rows.map((row: Row) => (
+		: current.map((row: Row) => (
 			<tr key={row.index}>
 				<td>{commaSeparated(row.roots)}</td>
 				<td>{row.meaning}</td>

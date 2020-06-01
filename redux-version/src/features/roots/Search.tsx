@@ -8,7 +8,7 @@ export function Search() {
 	const dispatch = useDispatch();
 
 	const [searchTerm, setSearchTerm] = useState('');
-	const loadingTrie = useSelector((state: RootState) => state.roots.loadingTrie);
+	const {loading: loadingTrie} = useSelector((state: RootState) => state.roots.trie);
 	const searching = useSelector((state: RootState) => state.roots.searching);
 
 	const handleSubmit = (e: FormEvent) => {
