@@ -86,3 +86,4 @@ export const search = (searchTerm: string): AppThunk => async (dispatch, getStat
 		}
 	);
 };
+

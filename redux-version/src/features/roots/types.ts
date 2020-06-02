@@ -23,6 +23,8 @@ export interface RowsState {
 	all: Row[];
 	error?: string;
 	loading: boolean;
+	totalPages: number;
+	currentPage: number;
 }
 
 export interface TrieState {
@@ -34,9 +36,11 @@ export interface TrieState {
 export const LOAD_TRIE_SUCCESS = 'LOAD_TRIE_SUCCESS';
 export const LOAD_TRIE_FAILURE = 'LOAD_TRIE_FAILURE';
 export const LOAD_TRIE_REQUEST = 'LOAD_TRIE_REQUEST';
+
 export const LOAD_ROWS_REQUEST = 'LOAD_ROWS_REQUEST';
 export const LOAD_ROWS_SUCCESS = 'LOAD_ROWS_SUCCESS';
 export const LOAD_ROWS_FAILURE = 'LOAD_ROWS_FAILURE';
+
 export const SEARCH_REQUEST = 'SEARCH_REQUEST';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const RESET_SEARCH = 'RESET_SEARCH';
@@ -90,5 +94,5 @@ interface LoadRowsFailureAction extends Action<typeof LOAD_ROWS_FAILURE, string>
 export type RootsActions =
 	LoadTrieRequestAction | LoadTrieSuccessAction | LoadTrieFailureAction |
 	LoadRowsRequestAction | LoadRowsSuccessAction | LoadRowsFailureAction |
-	SearchRequestAction | SearchSuccessAction |
-	ResetSearchAction;
+	SearchRequestAction | SearchSuccessAction | ResetSearchAction;
+

@@ -7,6 +7,7 @@ import {
 	LOAD_TRIE_FAILURE,
 	LOAD_TRIE_REQUEST,
 	LOAD_TRIE_SUCCESS,
+	RESET_SEARCH,
 	RootsActions,
 	RowsState,
 	SEARCH_REQUEST,
@@ -21,7 +22,9 @@ export const initialTrieState: TrieState = {
 export const initialRowsState: RowsState = {
 	current: [],
 	all: [],
-	loading: false
+	loading: false,
+	totalPages: 0,
+	currentPage: 0
 };
 
 export const rootsReducer = combineReducers({
@@ -49,6 +52,11 @@ export const rootsReducer = combineReducers({
 				return {
 					...state,
 					current: action.payload.map(index => state.all[index])
+				};
+			case RESET_SEARCH:
+				return {
+					...state,
+					current: state.all
 				};
 			default:
 				return state;

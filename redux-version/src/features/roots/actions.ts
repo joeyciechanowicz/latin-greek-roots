@@ -12,13 +12,15 @@ import {
 	TrieNode
 } from './types';
 
+export type ActionCreator<TPayload, TType> = (payload?: TPayload) => Action<TType, TPayload>;
+
 /**
  * Returns a function that will resolve to an action creator for type & payload
  * The return function is needed so that we can avoid having to pass TType, TPayload when TType can be inferred
  * from the first function call
  * @param type
  */
-function createActionCreator<TType>(type: TType): <TPayload = undefined>() => (payload?: TPayload) => Action<TType, TPayload> {
+function createActionCreator<TType>(type: TType): <TPayload = undefined>() => ActionCreator<TPayload, TType> {
 	return <TPayload>() => {
 		return (payload?: TPayload) => ({
 			type, payload
@@ -41,5 +43,4 @@ export const loadRowsFailure = createActionCreator(LOAD_ROWS_FAILURE)<string>();
 
 export const searchRequest = createActionCreator(SEARCH_REQUEST)();
 export const searchSuccess = createActionCreator(SEARCH_SUCCESS)<number[]>();
-
 export const resetSearch = createActionCreator(RESET_SEARCH)();

@@ -6,18 +6,18 @@ import {Results} from './features/roots/Results';
 
 import './App.css';
 import {useDispatch} from 'react-redux';
-import {loadTrie, loadRows} from './features/roots/thunks';
+import {loadRows, loadTrie} from './features/roots/thunks';
 
 function App() {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(loadTrie());
-        dispatch(loadRows());
-    });
+	useEffect(() => {
+		dispatch(loadTrie());
+		dispatch(loadRows());
+	});
 
 	return (
-		<div className="App">
+		<>
 			<header>
 				<Search/>
 			</header>
@@ -29,7 +29,7 @@ function App() {
 			<footer>
 				Copyright Wikipedia
 			</footer>
-		</div>
+		</>
 	);
 }
 
