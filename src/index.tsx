@@ -30,6 +30,5 @@ if (rootElement?.hasChildNodes()) {
 if (process.env.NODE_ENV === 'development') {
 	serviceWorker.unregister();
 } else {
-	// serviceWorker.unregister();
 	serviceWorker.register();
 }

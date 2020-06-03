@@ -12,7 +12,7 @@ import {
 } from './actions';
 import {AppThunk} from '../../store';
 
-export const loadTrie = (): AppThunk => async (dispatch, getState) => {
+export const loadTrie = (): AppThunk => async (dispatch) => {
 	dispatch(loadTrieRequest());
 
 	try {

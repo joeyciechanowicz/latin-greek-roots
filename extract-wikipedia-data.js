@@ -87,8 +87,8 @@ async function run() {
 	const rows = await extractAllData();
 	const trie = await buildSearchIndex(rows);
 
-	await serialize(trie, 'public/trie.json');
-	await serialize(rows, 'public/rows.json');
+	await serialize(trie, 'src/trie.json');
+	await serialize(rows, 'src/rows.json');
 }
 
 run()
