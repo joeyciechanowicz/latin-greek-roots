@@ -9,7 +9,6 @@ export function Search() {
 
 	const [searchTerm, setSearchTerm] = useState('');
 	const {loading: loadingTrie} = useSelector((state: RootState) => state.roots.trie);
-	const searching = useSelector((state: RootState) => state.roots.searching);
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
@@ -27,8 +26,7 @@ export function Search() {
 				       aria-label="search"
 				       onChange={e => setSearchTerm(e.target.value)}/>
 
-				<button className="u-ml-lg-1" disabled={loadingTrie || searching}
-				        type="submit">{searching ? 'Searching' : 'Search'}</button>
+				<button className="u-ml-lg-1" type="submit" disabled={loadingTrie}>Search</button>
 		</form>
 	);
 }
