@@ -2,48 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfe1e22e-cb7d-4b1b-94af-4d8dc0cfa0b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/extract-wikipedia-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/extract-wikipedia-data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rows.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/trie.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/rows.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/trie.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/components/Table-row.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/Table.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/Results.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/Search.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/__tests__/thunks.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/reducer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/thunks.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/react-app-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/serviceWorker.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/setupTests.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/src/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.sass" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
