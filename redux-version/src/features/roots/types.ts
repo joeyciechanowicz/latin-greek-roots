@@ -18,13 +18,18 @@ export interface Row {
 	examples: string[];
 }
 
+export interface Pagination<T> {
+	data: T[];
+	current: T[];
+	currentPage: number;
+	totalPages: number;
+}
+
 export interface RowsState {
-	current: Row[];
 	all: Row[];
 	error?: string;
 	loading: boolean;
-	totalPages: number;
-	currentPage: number;
+	paginated: Pagination<Row>;
 }
 
 export interface TrieState {
@@ -45,54 +50,45 @@ export const SEARCH_REQUEST = 'SEARCH_REQUEST';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const RESET_SEARCH = 'RESET_SEARCH';
 
+export const PAGINATE_CHANGE_PAGE = 'PAGINATE_CHANGE_PAGE';
+
 interface Action<TType extends string, TPayload = undefined> extends ReduxAction<TType> {
 	type: TType;
 	payload: TPayload;
 }
 
 interface ResetSearchAction extends Action<typeof RESET_SEARCH> {
-	type: typeof RESET_SEARCH;
 }
 
 interface SearchRequestAction extends Action<typeof SEARCH_REQUEST> {
-	type: typeof SEARCH_REQUEST;
 }
 
 interface SearchSuccessAction extends Action<typeof SEARCH_SUCCESS, number[]> {
-	type: typeof SEARCH_SUCCESS;
-	payload: number[]
 }
 
 interface LoadTrieRequestAction extends Action<typeof LOAD_TRIE_REQUEST> {
-	type: typeof LOAD_TRIE_REQUEST;
 }
 
 interface LoadTrieSuccessAction extends Action<typeof LOAD_TRIE_SUCCESS, TrieNode> {
-	type: typeof LOAD_TRIE_SUCCESS;
-	payload: TrieNode
 }
 
 interface LoadTrieFailureAction extends Action<typeof LOAD_TRIE_FAILURE, string> {
-	type: typeof LOAD_TRIE_FAILURE;
-	payload: string;
 }
 
 interface LoadRowsRequestAction extends Action<typeof LOAD_ROWS_REQUEST> {
-	type: typeof LOAD_ROWS_REQUEST;
 }
 
 interface LoadRowsSuccessAction extends Action<typeof LOAD_ROWS_SUCCESS, Row[]> {
-	type: typeof LOAD_ROWS_SUCCESS;
-	payload: Row[]
 }
 
 interface LoadRowsFailureAction extends Action<typeof LOAD_ROWS_FAILURE, string> {
-	type: typeof LOAD_ROWS_FAILURE;
-	payload: string;
+}
+
+interface PaginateChangePage extends Action<typeof PAGINATE_CHANGE_PAGE, number> {
 }
 
 export type RootsActions =
 	LoadTrieRequestAction | LoadTrieSuccessAction | LoadTrieFailureAction |
 	LoadRowsRequestAction | LoadRowsSuccessAction | LoadRowsFailureAction |
-	SearchRequestAction | SearchSuccessAction | ResetSearchAction;
-
+	SearchRequestAction | SearchSuccessAction | ResetSearchAction |
+	PaginateChangePage;

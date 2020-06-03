@@ -6,13 +6,13 @@ import {
 	loadRowsSuccess,
 	loadTrieFailure,
 	loadTrieRequest,
-	loadTrieSuccess,
+	loadTrieSuccess, paginateChangePage,
 	searchRequest,
 	searchSuccess
 } from './actions';
 import {AppThunk} from '../../store';
 
-export const loadTrie = (): AppThunk => async (dispatch) => {
+export const loadTrie = (): AppThunk => async (dispatch, getState) => {
 	dispatch(loadTrieRequest());
 
 	try {
@@ -25,11 +25,14 @@ export const loadTrie = (): AppThunk => async (dispatch) => {
 	}
 };
 
-export const loadRows = (): AppThunk => async (dispatch) => {
-	dispatch(loadRowsRequest());
+export const loadAllRows = (): AppThunk => async (dispatch, getState) => {
+	// We don't show we're loading when the state has been prefilled
+	if (getState().roots.rows.paginated.current.length === 0) {
+		dispatch(loadRowsRequest());
+	}
 
 	try {
-		const data = await fetch('/rows-unminified.json');
+		const data = await fetch('/rows.json');
 		const rows = await data.json() as Row[];
 
 		// Add an index so we can provide a key in our view
@@ -86,4 +89,15 @@ export const search = (searchTerm: string): AppThunk => async (dispatch, getStat
 		}
 	);
 };
+
+export const setPaginationPage = (page: number): AppThunk => async (dispatch, getState) => {
+	const {totalPages} = getState().roots.rows.paginated;
+
+	if (page < 0 || page >= totalPages) {
+		return;
+	}
+
+	dispatch(paginateChangePage(page));
+};
+
 

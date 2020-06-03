@@ -4,7 +4,7 @@ import {
 	LOAD_ROWS_SUCCESS,
 	LOAD_TRIE_FAILURE,
 	LOAD_TRIE_REQUEST,
-	LOAD_TRIE_SUCCESS,
+	LOAD_TRIE_SUCCESS, PAGINATE_CHANGE_PAGE,
 	RESET_SEARCH,
 	Row,
 	SEARCH_REQUEST,
@@ -44,3 +44,5 @@ export const loadRowsFailure = createActionCreator(LOAD_ROWS_FAILURE)<string>();
 export const searchRequest = createActionCreator(SEARCH_REQUEST)();
 export const searchSuccess = createActionCreator(SEARCH_SUCCESS)<number[]>();
 export const resetSearch = createActionCreator(RESET_SEARCH)();
+
+export const paginateChangePage = createActionCreator(PAGINATE_CHANGE_PAGE)<number>();

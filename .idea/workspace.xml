@@ -2,22 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfe1e22e-cb7d-4b1b-94af-4d8dc0cfa0b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/redux-version/src/components/Table-row.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/redux-version/src/components/Table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jcn7501.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/jcn7501.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rows-unminified.json.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rows.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rows.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/extract-wikipedia-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/extract-wikipedia-data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rows-unminified.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux-version/public/rows.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/public/rows-unminified.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/src/components/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/Table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/Results.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/Results.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/thunks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/features/roots/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/features/roots/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux-version/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-version/src/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/redux-version/src/store.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +69,7 @@
       <recent name="$PROJECT_DIR$/inferno-js/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/redux-version/src/features" />
       <recent name="$PROJECT_DIR$/redux-version/src" />
       <recent name="$PROJECT_DIR$/redux-version/src/features/roots" />
       <recent name="$PROJECT_DIR$/redux-version/src/features/search" />

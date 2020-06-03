@@ -7,6 +7,7 @@ import {
 	LOAD_TRIE_FAILURE,
 	LOAD_TRIE_REQUEST,
 	LOAD_TRIE_SUCCESS,
+	PAGINATE_CHANGE_PAGE,
 	RESET_SEARCH,
 	RootsActions,
 	RowsState,
@@ -20,12 +21,17 @@ export const initialTrieState: TrieState = {
 };
 
 export const initialRowsState: RowsState = {
-	current: [],
 	all: [],
 	loading: false,
-	totalPages: 0,
-	currentPage: 0
+	paginated: {
+		data: [],
+		current: [],
+		currentPage: 0,
+		totalPages: 0
+	}
 };
+
+export const PAGINATION_AMOUNT = 50;
 
 export const rootsReducer = combineReducers({
 	rows: (state: RowsState = initialRowsState, action: RootsActions): RowsState => {
@@ -40,7 +46,13 @@ export const rootsReducer = combineReducers({
 					...state,
 					loading: false,
 					all: action.payload,
-					current: action.payload
+					paginated: {
+						...state.paginated,
+						currentPage: 0,
+						totalPages: Math.ceil(action.payload.length / PAGINATION_AMOUNT),
+						current: action.payload.slice(0, PAGINATION_AMOUNT),
+						data: action.payload
+					}
 				};
 			case LOAD_ROWS_FAILURE:
 				return {
@@ -51,13 +63,34 @@ export const rootsReducer = combineReducers({
 			case SEARCH_SUCCESS:
 				return {
 					...state,
-					current: action.payload.map(index => state.all[index])
+					paginated: {
+						...state.paginated,
+						currentPage: 0,
+						totalPages: Math.ceil(action.payload.length / PAGINATION_AMOUNT),
+						current: action.payload.slice(0, PAGINATION_AMOUNT).map(i => state.all[i]),
+						data: action.payload.map(i => state.all[i])
+					}
 				};
 			case RESET_SEARCH:
 				return {
 					...state,
-					current: state.all
+					paginated: {
+						...state.paginated,
+						currentPage: 0,
+						totalPages: Math.ceil(state.all.length / PAGINATION_AMOUNT),
+						current: state.all.slice(0, PAGINATION_AMOUNT),
+						data: state.all
+					}
 				};
+			case PAGINATE_CHANGE_PAGE:
+				return {
+					...state,
+					paginated: {
+						...state.paginated,
+						currentPage: action.payload,
+						current: state.paginated.data.slice(action.payload * PAGINATION_AMOUNT, (action.payload + 1) * PAGINATION_AMOUNT)
+					}
+				}
 			default:
 				return state;
 		}

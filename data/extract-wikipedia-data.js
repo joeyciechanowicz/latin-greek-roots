@@ -89,13 +89,6 @@ async function buildSearchIndex(rows) {
 	return trie;
 }
 
-function compressRows(rows) {
-	return {
-		columnNames,
-		rows: rows.map(row => columnNames.map(name => row[name]))
-	};
-}
-
 function serialize(data, filename) {
 	return writeFile(filename, JSON.stringify(data))
 }
@@ -105,9 +98,7 @@ async function run() {
 	const trie = await buildSearchIndex(rows);
 
 	await serialize(trie, 'trie.json');
-	await serialize(compressRows(rows), 'rows.json');
-	await serialize(rows, 'rows-unminified.json');
-
+	await serialize(rows, 'rows.json');
 }
 
 run()

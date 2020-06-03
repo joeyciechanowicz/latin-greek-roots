@@ -1,10 +1,10 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
-import {Table} from '../../components/Table';
+import {Table} from '../Table';
 
 export function Results() {
-	const {loading, error, current} = useSelector((state: RootState) => state.roots.rows);
+	const {loading, error} = useSelector((state: RootState) => state.roots.rows);
 
 	if (loading) {
 		return (
@@ -23,5 +23,5 @@ export function Results() {
 		);
 	}
 
-	return <Table rows={current} />;
+	return <Table />;
 }
