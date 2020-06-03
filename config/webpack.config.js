@@ -24,7 +24,13 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-const copyWebpackPlugin = require('copy-webpack-plugin');
+const crypto = require('crypto');
+
+const rowsHash = crypto.createHash('md5');
+rowsHash.update(fs.readFileSync(__dirname + '/../public/rows.json'));
+
+const trieHash = crypto.createHash('md5');
+trieHash.update(fs.readFileSync(__dirname + '/../public/trie.json'));
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -618,8 +624,8 @@ module.exports = function (webpackEnv) {
 				clientsClaim: true,
 				exclude: [/\.map$/, /asset-manifest\.json$/],
 				additionalManifestEntries: [
-					{url: '/rows.json', revision: 'abc'},
-					{url: '/trie.json', revision: 'de'}
+					{url: '/rows.json', revision: rowsHash.digest('hex')},
+					{url: '/trie.json', revision: trieHash.digest('hex')}
 				],
 				// importWorkboxFrom: 'cdn',
 				navigateFallback: paths.publicUrlOrPath + 'index.html',
