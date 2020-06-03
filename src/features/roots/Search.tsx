@@ -17,25 +17,18 @@ export function Search() {
 		if (searchTerm === '') {
 			dispatch(resetSearch());
 		} else {
-			dispatch(search(searchTerm))
+			dispatch(search(searchTerm));
 		}
 	};
 
 	return (
-		<div className="row">
-			<div className="col ">
-				<form onSubmit={handleSubmit}>
-					<div className="11 col">
-						<input className="card w-100" type="search" id="search" placeholder="Search" value={searchTerm}
-						       aria-label="search"
-						       onChange={e => setSearchTerm(e.target.value)}/>
-					</div>
+		<form onSubmit={handleSubmit} className="row">
+				<input className="" type="search" id="search" placeholder="Search" value={searchTerm}
+				       aria-label="search"
+				       onChange={e => setSearchTerm(e.target.value)}/>
 
-					<div className="1 col">
-						<button className="btn" disabled={loadingTrie || searching} type="submit">{searching ? 'Searching' : 'Search'}</button>
-					</div>
-				</form>
-			</div>
-		</div>
+				<button className="u-ml-lg-1" disabled={loadingTrie || searching}
+				        type="submit">{searching ? 'Searching' : 'Search'}</button>
+		</form>
 	);
 }

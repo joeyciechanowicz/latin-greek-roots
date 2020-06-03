@@ -3,14 +3,15 @@
 ## Setup
 
 1. Clone the repo
-1. Generate the shared data structures
+1. Extract the search trie and data from wikipedia
  ```
- cd data && npm i && npm start
+npm run extract-data
 ```
-1. Pick one of the implementations and follow the instructions within that directory
 
-## Project structure
-This project is a monorepo with each folder representing a different implementation. Several of the folders (`data`) are shared projects which get included (via `npm` file references) into each project.
+## Development
 
-### Data
-The [data](/data) project contains the code to extract the data from Wikipedia and create the search index.
+Run `npm start` or `npm test` to start initial development.
+
+## Build
+
+Run `npm run build` to build. `

@@ -1,10 +1,13 @@
 import React from 'react';
-import './index.css';
+import {Provider} from 'react-redux';
+import {hydrate, render} from 'react-dom';
+
+import './index.sass';
+// import 'milligram/src/milligram.sass';
+
 import App from './App';
 import {store} from './store';
-import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import {hydrate, render} from 'react-dom';
 
 const ConnectedApp = () => (
 	<React.StrictMode>

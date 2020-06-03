@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <text x="5" y="80" style="fill: #764ABC; stroke: #764ABC; font-size: 64px;">√</text>
+        <line x1="40" y1="22.6" x2="90" y2="22.6" style="stroke: #764ABC; stroke-width: 3"/>
+    <text x="40" y="75" style="fill: #764ABC; stroke: #764ABC; font-size: 64px;">R</text>
+</svg>

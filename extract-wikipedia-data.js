@@ -4,16 +4,6 @@ const {promisify} = require('util');
 const {JSDOM} = require('jsdom');
 const writeFile = promisify(fs.writeFile);
 
-const paginationAmount = 50;
-
-const columnNames = [
-	'roots',
-	'meaning',
-	'originLanguage',
-	'etymology',
-	'examples'
-];
-
 async function extractWikipediaData(url) {
 	const dom = await JSDOM.fromURL(url);
 
@@ -97,8 +87,8 @@ async function run() {
 	const rows = await extractAllData();
 	const trie = await buildSearchIndex(rows);
 
-	await serialize(trie, 'trie.json');
-	await serialize(rows, 'rows.json');
+	await serialize(trie, 'public/trie.json');
+	await serialize(rows, 'public/rows.json');
 }
 
 run()
