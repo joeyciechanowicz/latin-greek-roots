@@ -16,7 +16,7 @@ function App() {
 
 	return (
 		<>
-			<header className="container">
+			<header>
 				<Search/>
 			</header>
 
@@ -25,9 +25,14 @@ function App() {
 			</main>
 
 			<footer className="container u-mt-1">
-				<div className="row">
+				<div className="row u-center-text">
 					<div className="column u-center-text">
-						Thanks to the Wikipedia pages for Latin and Greek Roots  <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/A-G">A-G</a>, <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/H-O">H-O</a>, <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/P-Z">P-Z</a>
+						Thanks to the Wikipedia pages for Latin and Greek roots  <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/A-G">A-G</a>, <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/H-O">H-O</a>, <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/P-Z">P-Z</a>
+					</div>
+				</div>
+				<div className="row u-center-text">
+					<div className="column u-center-text">
+						Build with <abbr title="love">♥</abbr> by <a href="https://github.com/joeyciechanowicz/latin-greek-roots">Joey Ciechanowicz</a>
 					</div>
 				</div>
 			</footer>

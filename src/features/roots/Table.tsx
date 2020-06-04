@@ -21,7 +21,7 @@ export function Table() {
 			<tr>
 				<th scope="col">Roots</th>
 				<th scope="col">Meaning</th>
-				<th scope="col">Origin Language</th>
+				{/*<th scope="col">Origin Language</th>*/}
 				<th scope="col">Etymology</th>
 				<th scope="col">Examples</th>
 			</tr>

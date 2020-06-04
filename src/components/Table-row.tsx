@@ -8,7 +8,7 @@ export function TableRow({row}: {row: Row}) {
 		<tr key={row.index}>
 			<td>{commaSeparated(row.roots)}</td>
 			<td>{row.meaning}</td>
-			<td>{row.originLanguage}</td>
+			{/*<td>{row.originLanguage}</td>*/}
 			<td>{row.etymology}</td>
 			<td>{commaSeparated(row.examples)}</td>
 		</tr>
