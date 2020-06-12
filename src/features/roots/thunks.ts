@@ -62,6 +62,7 @@ export const search = (searchTerm: string): AppThunk => async (dispatch, getStat
 	// Enqueue a microtask
 	return new Promise<void>(resolve => {
 			const {rootNode} = getState().roots.trie;
+			const loweredTerm = searchTerm.toLowerCase();
 
 			if (rootNode === undefined) {
 				dispatch(searchSuccess([]));
@@ -69,8 +70,8 @@ export const search = (searchTerm: string): AppThunk => async (dispatch, getStat
 			}
 
 			let currentNode: TrieNode = rootNode;
-			for (let i = 0; i < searchTerm.length; i++) {
-				const letter = searchTerm[i];
+			for (let i = 0; i < loweredTerm.length; i++) {
+				const letter = loweredTerm[i];
 
 				if (currentNode[letter]) {
 					currentNode = currentNode[letter];
