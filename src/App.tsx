@@ -43,7 +43,7 @@ const Table: Component<{ rows: Accessor<any> }> = ({ rows }) => {
 
   const setPage = (change: -1 | 1) => {
     const nextPageNum = currentPage() + change;
-    if (nextPageNum > 0 && nextPageNum < rows().length / ROWS_PER_PAGE) {
+    if (nextPageNum >= 0 && nextPageNum < rows().length / ROWS_PER_PAGE) {
       setCurrentPage(nextPageNum);
       window.scrollTo(0, 0);
     }
@@ -155,15 +155,16 @@ const App: Component = () => {
 
   return (
     <>
-      <Header onSearch={setSearchTerm} />
-      <Suspense fallback={<p>Loading...</p>}>
-        <Show
-          when={!rows.error && !trie.error}
-          fallback={<p>Error loading resources</p>}
-        >
-          <Table rows={displayedRows} />
-        </Show>
-      </Suspense>
+      <Show when={rows.loading || trie.loading}>
+        <p>Loading...</p>
+      </Show>
+      <Show when={rows.error || trie.error}>
+        <p>Error loading the dictionary</p>
+      </Show>
+      <Show when={!(rows.error || trie.error || rows.loading || trie.loading)}>
+        <Header onSearch={setSearchTerm} />
+        <Table rows={displayedRows} />
+      </Show>
       <footer className="c-footer">
         <p className="">
           Thanks to the Wikipedia pages for Latin and Greek roots{" "}
