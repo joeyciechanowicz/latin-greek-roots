@@ -1,43 +1,43 @@
-import React, {useEffect} from 'react';
+import { Component, createResource, createSignal } from "solid-js";
+import { ROWS_FILENAME, TRIE_FILENAME } from "./asset-manifest";
 
-import {Search} from './features/roots/Search';
-import {Results} from './features/roots/Results';
+import logo from "./logo.svg";
+import styles from "./App.module.css";
 
-import {useDispatch} from 'react-redux';
-import {loadAllRows, loadTrie} from './features/roots/thunks';
+const fetchTrie = async () => (await fetch(`/${TRIE_FILENAME}`)).json();
+const fetchRows = async () => (await fetch(`/${ROWS_FILENAME}`)).json();
 
-function App() {
-	const dispatch = useDispatch();
+const App: Component = () => {
+  const [rows] = createResource(fetchRows);
+  const [trie] = createResource(fetchTrie);
 
-	useEffect(() => {
-		dispatch(loadAllRows());
-		dispatch(loadTrie());
-	});
-
-	return (
-		<>
-			<header>
-				<Search/>
-			</header>
-
-			<main>
-				<Results/>
-			</main>
-
-			<footer className="container u-mt-1">
-				<div className="row u-center-text">
-					<div className="column u-center-text">
-						Thanks to the Wikipedia pages for Latin and Greek roots  <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/A-G">A-G</a>, <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/H-O">H-O</a>, <a href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/P-Z">P-Z</a>
-					</div>
-				</div>
-				<div className="row u-center-text">
-					<div className="column u-center-text">
-						Build with <abbr title="love">♥</abbr> by <a href="https://github.com/joeyciechanowicz/latin-greek-roots">Joey Ciechanowicz</a>
-					</div>
-				</div>
-			</footer>
-		</>
-	);
-}
+  return (
+    <>
+      {rows.loading && <h1>Loading...</h1>}
+      {rows.error && (
+        <main>
+          <h1>There was an error loading the data</h1>
+          <p>{rows.error}</p>
+        </main>
+      )}
+    </>
+    // <div class={styles.App}>
+    //   <header class={styles.header}>
+    //     <img src={logo} class={styles.logo} alt="logo" />
+    //     <p>
+    //       Edit <code>src/App.tsx</code> and save to reload.
+    //     </p>
+    //     <a
+    //       class={styles.link}
+    //       href="https://github.com/solidjs/solid"
+    //       target="_blank"
+    //       rel="noopener noreferrer"
+    //     >
+    //       Learn Solid
+    //     </a>
+    //   </header>
+    // </div>
+  );
+};
 
 export default App;

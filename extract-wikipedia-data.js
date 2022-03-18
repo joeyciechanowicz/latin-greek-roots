@@ -1,11 +1,18 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const {promisify} = require('util');
-const {JSDOM} = require('jsdom');
+const {JSDOM, ResourceLoader} = require('jsdom');
 const writeFile = promisify(fs.writeFile);
+const {createHash} = require('crypto');
+  
+
+// Needed when running inside of a VPN
+const resourceLoader = new ResourceLoader({
+	strictSSL: false,
+});
 
 async function extractWikipediaData(url) {
-	const dom = await JSDOM.fromURL(url);
+	const dom = await JSDOM.fromURL(url, {resources: resourceLoader});
 
 	return [...dom.window.document.querySelectorAll('.wikitable.sortable tbody tr')]
 		.map(row => row.cells)
@@ -44,9 +51,9 @@ async function buildSearchIndex(rows) {
 			.map(root => root.replace(/-/g, '').toLowerCase())
 			.forEach(root => addWordToTrie(root, index));
 
-		row.examples
-			.map(meaning => meaning.toLowerCase())
-			.forEach(meaning => addWordToTrie(meaning, index));
+		// row.examples
+		// 	.map(meaning => meaning.toLowerCase())
+		// 	.forEach(meaning => addWordToTrie(meaning, index));
 	});
 
 	/**
@@ -79,16 +86,26 @@ async function buildSearchIndex(rows) {
 	return trie;
 }
 
-function serialize(data, filename) {
-	return writeFile(filename, JSON.stringify(data))
+function serializeAndHash(data, filename) {
+	const contents = JSON.stringify(data);
+	const hash = createHash('sha256');
+	hash.update(contents);
+
+	const digest = hash.digest('base64').slice(1, 17);
+	
+	const hashedFilename = `${filename}.${digest}.json`;
+	console.log('writing file ', hashedFilename)
+	return writeFile(hashedFilename, contents).then(() => digest);
 }
 
 async function run() {
 	const rows = await extractAllData();
 	const trie = await buildSearchIndex(rows);
 
-	await serialize(trie, 'src/trie.json');
-	await serialize(rows, 'src/rows.json');
+	const trieHash = await serializeAndHash(trie, 'public/trie');
+	const rowsHash = await serializeAndHash(rows, 'public/rows');
+
+	await writeFile('src/asset-manifest.ts', `export const TRIE_FILENAME='trie.${trieHash}.json';\nexport const ROWS_FILENAME='rows.${rowsHash}.json';`);
 }
 
 run()
