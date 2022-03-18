@@ -32,6 +32,7 @@ html:focus-within {
 
 html {
   font-size: 62.5%;
+    width: 100vw;
 }
 
 /* Set core body defaults */
