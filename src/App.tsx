@@ -23,6 +23,7 @@ const Table: Component<{ rows: Accessor<any> }> = ({ rows }) => {
   const [currentRows, setCurrentRows] = createSignal<Row[]>([]);
   const [currentPage, setCurrentPage] = createSignal(0);
 
+  // Updates the current rows displayed when the page number is updated
   createEffect(() => {
     setCurrentRows(
       rows().slice(
@@ -32,6 +33,7 @@ const Table: Component<{ rows: Accessor<any> }> = ({ rows }) => {
     );
   });
 
+  // Set the current page and number to zero when the rows are updated (i.e. from a search)
   createEffect(
     on(rows, (updatedRows) => {
       batch(() => {
@@ -142,6 +144,7 @@ const App: Component = () => {
   const [searchTerm, setSearchTerm] = createSignal("");
   const [displayedRows, setDisplayedRows] = createSignal<Row[]>([]);
 
+  // Run a search when the term changes
   createEffect(() => {
     if (rows()) {
       if (searchTerm() === "") {

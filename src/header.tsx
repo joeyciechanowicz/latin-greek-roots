@@ -1,3 +1,4 @@
+import { track } from "insights-js";
 import { Component } from "solid-js";
 
 interface HeaderProps {
@@ -10,6 +11,12 @@ export const Header: Component<HeaderProps> = ({ onSearch }) => {
     <header className={"c-header"}>
       <form
         onSubmit={(e) => {
+          track({
+            id: "search",
+            parameters: {
+              term: input.value,
+            },
+          });
           e.preventDefault();
           onSearch(input.value.trim());
         }}
