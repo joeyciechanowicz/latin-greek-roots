@@ -58,7 +58,8 @@ a:not([class]) {
 input,
 button,
 textarea,
-select {
+select,
+.c-pagination__btn {
   font: inherit;
 }
 
@@ -82,7 +83,7 @@ a {
   color: #1eaedb;
 }
 
-button {
+button, .c-pagination__btn {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
@@ -102,7 +103,7 @@ button {
   width: 114px;
 }
 
-button:disabled {
+button:disabled, .c-pagination__btn--disabled {
   background: #ebebeb;
   text-decoration: line-through;
 }

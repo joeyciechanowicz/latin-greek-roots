@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "ESNext",
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "types": ["vite/client"],
+    "types": ["node"],
     "noEmit": true,
-    "isolatedModules": true
-  }
+    "resolveJsonModule": true,
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
 }
