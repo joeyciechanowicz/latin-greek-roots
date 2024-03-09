@@ -5,11 +5,12 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
     "noEmit": true,
     "resolveJsonModule": true,
   },
   "ts-node": {
+    "swc": true,
     "compilerOptions": {
       "module": "commonjs"
     }

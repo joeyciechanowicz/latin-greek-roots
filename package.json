@@ -5,14 +5,19 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "extract-data": "ts-node extract-wikipedia-data.ts",
-    "test": "node --test --require ts-node/register ./src/**/*.test.*",
-    "test:watch": "node --test --watch --require ts-node/register ./src/**/*.test.*"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "benchmark": "ts-node src/renderers/benchmark.ts"
   },
   "license": "MIT",
   "devDependencies": {
+    "@swc/core": "^1.4.6",
+    "@swc/jest": "^0.2.36",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.11.24",
+    "jest": "^29.7.0",
     "jsdom": "^24.0.0",
     "tinybench": "^2.6.0",
     "ts-node": "^10.9.2",
@@ -25,5 +30,10 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(t|j)sx?$": "@swc/jest"
+    }
   }
 }

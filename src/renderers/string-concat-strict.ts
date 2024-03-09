@@ -27,12 +27,11 @@ export const renderStringConcatStrict: RenderFunc = (
         </form>
       </header>`;
 
-  const table = `
-    ${
-      rows.length === 0
-        ? "<p>No search results found</p>"
-        : `
-      <table>
+  if (rows.length === 0) {
+    return header + searchBox + "<p>No search results found</p>" + footer;
+  }
+
+  let table: string = `<table>
         <thead>
           <tr>
             <th scope="col">Roots</th>
@@ -41,39 +40,55 @@ export const renderStringConcatStrict: RenderFunc = (
             <th scope="col">Etymology</th>
             <th scope="col">Examples</th>
           </tr>
-        </thead>
-        ${rows
-          .slice((currentPage - 1) * ROWS_PER_PAGE, currentPage * ROWS_PER_PAGE)
-          .map(
-            (row) => `<tr>
-              <td>${row.roots.join(", ")}</td>
-              <td>${row.meaning}</td>
-              <td>${row.originLanguage}</td>
-              <td>${row.etymology}</td>
-              <td>${row.examples.join(", ")}</td>
+        </thead>`;
+  table += rows
+    .slice((currentPage - 1) * ROWS_PER_PAGE, currentPage * ROWS_PER_PAGE)
+    .map(
+      (row) =>
+        `<tr>
+              <td>` +
+        row.roots.join(", ") +
+        `</td>
+              <td>` +
+        row.meaning +
+        `</td>
+              <td>` +
+        row.originLanguage +
+        `</td>
+              <td>` +
+        row.etymology +
+        `</td>
+              <td>` +
+        row.examples.join(", ") +
+        `</td>
             </tr>
         `
-          )
-          .join("")}
-      </table>
-      <div class="c-pagination__controls">
-        <a class="c-pagination__btn ${
-          currentPage - 1 === 0 ? "c-pagination__btn--disabled" : ""
-        }" href="/?page=${currentPage - 1}${
-            query.length ? `&query=${query}` : ""
-          }">
+    )
+    .join("");
+
+  table += `</table>`;
+
+  table += `<div class="c-pagination__controls">
+        <a class="c-pagination__btn `;
+
+  table += currentPage - 1 === 0 ? "c-pagination__btn--disabled" : "";
+  table += `" href="/?page=` + (currentPage - 1).toString();
+  table += query.length ? "&query=" + query : "";
+  table +=
+    `">
           Previous
         </a>
         <span class="c-pagination__pagenum">
-          ${currentPage} / ${maxPage}
-        </span>
-        <a class="c-pagination__btn" href="/${query.length ? query + "/" : ""}${
-            currentPage + 1
-          }">
-          Next
-        </a>
-  </div>
-    `
-    }`;
+          ` +
+    currentPage +
+    "/" +
+    maxPage +
+    `</span>
+        <a class="c-pagination__btn" href="/` +
+    (query.length ? query + "/" : "") +
+    (currentPage + 1) +
+    `">Next</a></div>
+    `;
+
   return header + searchBox + table + footer;
 };
