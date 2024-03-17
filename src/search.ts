@@ -1,6 +1,16 @@
-import rowsJson from "./rows.json";
-import trieJson from "./trie.json";
+// import rowsJson from "./rows.json" assert { type: "json" };
+// import trieJson from "./trie.json" assert { type: "json" };
+import { readFileSync } from "node:fs";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
 import { Row, TrieNode } from "./types";
+
+const filename = fileURLToPath(import.meta.url);
+const dir = dirname(filename);
+
+const rowsJson = JSON.parse(readFileSync(dir + "/rows.json").toString());
+const trieJson = JSON.parse(readFileSync(dir + "/trie.json").toString());
 
 export const trie = trieJson as TrieNode;
 export const rows = rowsJson as Row[];

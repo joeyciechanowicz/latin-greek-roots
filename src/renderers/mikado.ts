@@ -1,12 +1,20 @@
-import { footer, header } from "../templates";
+import mikado from "mikado/ssr";
+import { footer, header } from "../templates/index";
 import { ROWS_PER_PAGE, RenderFunc, Row } from "../types";
 
-export const renderStringConcatStrict: RenderFunc = (
-  currentPage: number,
-  maxPage: number,
-  query: string,
-  rows: Row[]
-) => {
+let view;
+
+mikado
+  .compile("view/start.html", {
+    csr: false,
+  })
+  .then((v) => (view = v));
+
+export const renderStringConcat: RenderFunc = ({
+  currentPage,
+  query,
+  rows,
+}) => {
   const searchBox =
     `
       <header class="c-header">
@@ -42,7 +50,7 @@ export const renderStringConcatStrict: RenderFunc = (
           </tr>
         </thead>`;
   table += rows
-    .slice((currentPage - 1) * ROWS_PER_PAGE, currentPage * ROWS_PER_PAGE)
+    .slice(currentPage * ROWS_PER_PAGE, (currentPage + 1) * ROWS_PER_PAGE - 1)
     .map(
       (row) =>
         `<tr>
@@ -82,7 +90,7 @@ export const renderStringConcatStrict: RenderFunc = (
           ` +
     currentPage +
     "/" +
-    maxPage +
+    Math.ceil(rows.length / ROWS_PER_PAGE) +
     `</span>
         <a class="c-pagination__btn" href="/` +
     (query.length ? query + "/" : "") +

@@ -1,5 +1,5 @@
 import { rows } from "../search";
-import { renderStringConcatStrict } from "./string-concat-strict";
+import { renderStringConcatStrict } from "./string-concat";
 
 console.profile();
 

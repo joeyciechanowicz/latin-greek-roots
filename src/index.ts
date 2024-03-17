@@ -1,49 +1,82 @@
 import express from "express";
-import { readFileSync } from "node:fs";
-import { rows as allRows, search } from "./search";
-import { ROWS_PER_PAGE, Row } from "./types";
-import path from "node:path";
+import { join } from "node:path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { renderJsx } from "./renderers/customjsx";
+import { renderStringConcat } from "./renderers/string-concat";
 import { renderStringInterpolate } from "./renderers/string-interpolate";
+import { rows as allRows, search } from "./search";
 
+const filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(filename);
 const app = express();
 
-app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use("/assets", express.static(join(__dirname, "assets")));
 
 const renderPaginated = (page: number) => {
-  return renderStringInterpolate(
-    page,
-    Math.ceil(allRows.length / ROWS_PER_PAGE),
-    "",
-    allRows
-  );
+  return renderStringConcat({
+    currentPage: page,
+    query: "",
+    rows: allRows,
+  });
 };
 
 const renderSearch = (page: number, query: string) => {
   const searchRows = search(query);
-  return renderStringInterpolate(
-    page,
-    Math.ceil(searchRows.length / ROWS_PER_PAGE),
+  return renderStringConcat({
+    currentPage: page,
     query,
-    searchRows
-  );
+    rows: searchRows,
+  });
 };
 
-app.get("/", (req, res) => {
-  const pageNum =
-    parseInt(typeof req.query.page === "string" ? req.query.page : "1") || 1;
-  res.contentType("html").send(renderPaginated(pageNum)).end();
-});
+const validSearchTermRegex = /^[a-zA-Z-]+$/;
 
+// must be before the main route, below, so that
+// "search" doesn't get matched as a page number
 app.get("/search", (req, res) => {
   const pageNum =
     parseInt(typeof req.query.page === "string" ? req.query.page : "1") || 1;
+
   const searchTerm = typeof req.query.query === "string" ? req.query.query : "";
 
   if (searchTerm === "") {
-    res.contentType("html").send(renderPaginated(pageNum)).end();
-  } else {
-    res.contentType("html").send(renderSearch(pageNum, searchTerm)).end();
+    return res.redirect("/");
   }
+
+  if (!validSearchTermRegex.test(searchTerm)) {
+    return res.redirect("/");
+  }
+
+  if (searchTerm === "" || searchTerm.length > 255) {
+    res
+      .contentType("html")
+      .send(renderPaginated(pageNum - 1))
+      .end();
+  } else {
+    res
+      .contentType("html")
+      .send(renderSearch(pageNum - 1, searchTerm))
+      .end();
+  }
+});
+
+app.get("/:page?", (req, res) => {
+  const pageNum =
+    parseInt(typeof req.params.page === "string" ? req.params.page : "1") || 1;
+
+  res
+    .contentType("html")
+    .send(renderPaginated(pageNum - 1))
+    .end();
+});
+
+app.get("/jsx", (req, res) => {
+  const output = renderJsx(0);
+
+  console.log(output);
+
+  res.contentType("html").send().end(output);
 });
 
 export const server = app.listen(process.env.PORT || 8080, () => {

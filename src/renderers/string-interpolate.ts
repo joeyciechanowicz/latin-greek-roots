@@ -1,12 +1,12 @@
-import { footer, header } from "../templates";
-import { ROWS_PER_PAGE, RenderFunc, Row } from "../types";
+import { footer, header } from "../templates/index";
+import { ROWS_PER_PAGE, RenderFunc } from "../types";
+import { nextUrl, prevUrl } from "./utils";
 
-export const renderStringInterpolate: RenderFunc = (
-  currentPage: number,
-  maxPage: number,
-  query: string,
-  rows: Row[]
-) => {
+export const renderStringInterpolate: RenderFunc = ({
+  currentPage,
+  query,
+  rows,
+}) => {
   const searchBox = `
       <header class="c-header">
         <form action="/search" method="get">
@@ -40,7 +40,10 @@ export const renderStringInterpolate: RenderFunc = (
           </tr>
         </thead>
         ${rows
-          .slice((currentPage - 1) * ROWS_PER_PAGE, currentPage * ROWS_PER_PAGE)
+          .slice(
+            currentPage * ROWS_PER_PAGE,
+            (currentPage + 1) * ROWS_PER_PAGE - 1
+          )
           .map(
             (row) => `<tr>
               <td>${row.roots.join(", ")}</td>
@@ -54,21 +57,29 @@ export const renderStringInterpolate: RenderFunc = (
           .join("")}
       </table>
       <div class="c-pagination__controls">
-        <a class="c-pagination__btn ${
-          currentPage - 1 === 0 ? "c-pagination__btn--disabled" : ""
-        }" href="/?page=${currentPage - 1}${
-            query.length ? `&query=${query}` : ""
-          }">
-          Previous
-        </a>
+            ${
+              currentPage !== 0
+                ? `<a class="c-pagination__btn" href="${prevUrl(
+                    currentPage,
+                    query
+                  )}">
+                  Previous
+                </a>`
+                : ""
+            }
         <span class="c-pagination__pagenum">
-          ${currentPage} / ${maxPage}
+          ${currentPage + 1} / ${Math.ceil(rows.length / ROWS_PER_PAGE)}
         </span>
-        <a class="c-pagination__btn" href="/${query.length ? query + "/" : ""}${
-            currentPage + 1
-          }">
+        ${
+          currentPage < Math.floor(rows.length / ROWS_PER_PAGE)
+            ? `<a class="c-pagination__btn" href="${nextUrl(
+                currentPage,
+                query
+              )}">
           Next
-        </a>
+        </a>`
+            : ""
+        }
   </div>
     `
     }`;

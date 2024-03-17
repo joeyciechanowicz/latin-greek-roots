@@ -1,0 +1,10 @@
+{
+    "jsc": {
+        "experimental": {
+          "keepImportAssertions": true
+        },
+        "parser": {
+          "jsx": true
+        }
+      }
+}

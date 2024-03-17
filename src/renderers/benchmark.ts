@@ -1,27 +1,31 @@
 import { Bench } from "tinybench";
 import { renderStringInterpolate } from "./string-interpolate";
 import { rows } from "../search";
-import { renderStringConcatStrict } from "./string-concat-strict";
+import { renderStringConcat } from "./string-concat";
+import { ROWS_PER_PAGE } from "../types";
 
 const bench = new Bench({ time: 5000 });
+const MAX = Math.floor(rows.length / ROWS_PER_PAGE) - 1;
 
 (async () => {
   console.log("Starting benchmark");
   bench
     .add("renderStringInterpolate", () => {
-      return renderStringInterpolate(0, 50, "some-query", rows);
+      return renderStringInterpolate({
+        currentPage: Math.floor(Math.random() * MAX),
+        query: "some-query",
+        rows,
+      });
     })
-    .add("renderStringInterpolateMid", () => {
-      return renderStringInterpolate(1001, 1051, "some-query", rows);
-    })
-    .add("renderStringConcatStrict", () => {
-      return renderStringConcatStrict(0, 50, "some-query", rows);
-    })
-    .add("renderStringConcatStrictMid", () => {
-      return renderStringConcatStrict(1001, 1051, "some-query", rows);
+    .add("renderStringConcat", () => {
+      return renderStringConcat({
+        currentPage: Math.floor(Math.random() * MAX),
+        query: "some-query",
+        rows,
+      });
     });
 
-  bench.addEventListener("cycle", (e) => {
+  bench.addEventListener("cycle", () => {
     console.log("Started a task");
   });
 

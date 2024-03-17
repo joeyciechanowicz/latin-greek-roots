@@ -17,9 +17,8 @@ export interface Row {
   examples: string[];
 }
 
-export type RenderFunc = (
-  currentPage: number,
-  maxPage: number,
-  query: string,
-  rows: Row[]
-) => string;
+export type RenderFunc = (args: {
+  currentPage: number;
+  query: string;
+  rows: Row[];
+}) => string;

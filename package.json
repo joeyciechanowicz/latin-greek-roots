@@ -2,15 +2,21 @@
   "name": "latin-greek-roots",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts",
+    "start": "node --import @swc-node/register/esm-register src/index.ts",
+    "dev": "nodemon  --exec 'node --import @swc-node/register/esm-register src/index.ts'",
     "extract-data": "ts-node extract-wikipedia-data.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "benchmark": "ts-node src/renderers/benchmark.ts"
+    "benchmark:tinybench": "node --import @swc-node/register/esm-register src/renderers/benchmark.ts",
+    "bun:benchmark:tinybench": "bun src/renderers/benchmark.ts",
+    "benchmark:mitata": "node --import @swc-node/register/esm-register src/renderers/benchmark-mitata.ts",
+    "bun:benchmark:mitata": "bun src/renderers/benchmark-mitata.ts"
   },
   "license": "MIT",
   "devDependencies": {
+    "@swc-node/register": "^1.9.0",
     "@swc/core": "^1.4.6",
     "@swc/jest": "^0.2.36",
     "@types/express": "^4.17.21",
@@ -19,14 +25,15 @@
     "@types/node": "^20.11.24",
     "jest": "^29.7.0",
     "jsdom": "^24.0.0",
+    "mitata": "^0.1.11",
+    "nodemon": "^3.1.0",
     "tinybench": "^2.6.0",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "express": "^4.18.3",
-    "insights-js": "^1.2.11"
+    "insights-js": "^1.2.11",
+    "mikado": "^0.8.329"
   },
   "engines": {
     "node": ">=20"
@@ -35,5 +42,12 @@
     "transform": {
       "^.+\\.(t|j)sx?$": "@swc/jest"
     }
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "watch": [
+      "src"
+    ],
+    "ext": "js,json,ts,tsx"
   }
 }

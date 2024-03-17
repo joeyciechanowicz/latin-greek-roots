@@ -1,18 +1,16 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "module": "ESNext",
     "types": ["node", "jest"],
     "noEmit": true,
-    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx":"react"
   },
   "ts-node": {
     "swc": true,
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "ESNext"
     }
   },
 }
