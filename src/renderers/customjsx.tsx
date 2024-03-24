@@ -6,7 +6,10 @@ const React = {
     //   props,
     //   children,
     // };
-    return "<" + type + ">";
+    let html = "<" + type + ">";
+
+    for (const [key, value] of props) {
+    }
   },
 };
 ``;

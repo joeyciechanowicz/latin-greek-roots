@@ -51,7 +51,7 @@ export const renderStringConcat: RenderFunc = ({
     table +=
       `<tr>
             <td>` +
-      row.roots.join(", ") +
+      row.roots +
       `</td>
             <td>` +
       row.meaning +
@@ -63,7 +63,7 @@ export const renderStringConcat: RenderFunc = ({
       row.etymology +
       `</td>
             <td>` +
-      row.examples.join(", ") +
+      row.examples +
       `</td>
           </tr>
       `;

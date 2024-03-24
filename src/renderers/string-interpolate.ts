@@ -46,11 +46,11 @@ export const renderStringInterpolate: RenderFunc = ({
           )
           .map(
             (row) => `<tr>
-              <td>${row.roots.join(", ")}</td>
+              <td>${row.roots}</td>
               <td>${row.meaning}</td>
               <td>${row.originLanguage}</td>
               <td>${row.etymology}</td>
-              <td>${row.examples.join(", ")}</td>
+              <td>${row.examples}</td>
             </tr>
         `
           )

@@ -118,8 +118,11 @@ async function run() {
   const rows = await extractAllData();
   const trie = await buildSearchIndex(rows);
 
-  const trieHash = await writeFile("./src/trie.json", JSON.stringify(trie));
-  const rowsHash = await writeFile("./src/rows.json", JSON.stringify(rows));
+  await writeFile("./src/trie.json", JSON.stringify(trie));
+  await writeFile("./src/rows.json", JSON.stringify(rows));
+
+  await writeFile("./go-impl/trie.json", JSON.stringify(trie));
+  await writeFile("./go-impl/rows.json", JSON.stringify(rows));
 }
 
 run()

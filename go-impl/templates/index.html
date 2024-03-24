@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="Description"
+      content="Author: Joey Ciechanowicz, Category: Education. Learn latin and greek roots (prefixes and suffixes) for words"
+    />
+    <title>Latin/Greek roots</title>
+    <link rel="shortcut icon" type="image/ico" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/assets/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="c-header">
+        <form action="/search" method="get">
+          <input
+            type="search"
+            name="query"
+            class="c-header__term"
+            placeholder="Search"
+            aria-label="Search query"
+            value="{{ .query }}"
+          />
+          <button type="submit" class="c-header__submit">Search</button>
+        </form>
+      </header>
+      {{ if .Rows }}
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Roots</th>
+            <th scope="col">Meaning</th>
+            <th scope="col">Origin Language</th>
+            <th scope="col">Etymology</th>
+            <th scope="col">Examples</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{ range .Rows }}
+          <tr>
+            <td>{{ StringJoin .Roots ", " }}</td>
+            <td>{{ .Meaning }}</td>
+            <td>{{ .OriginLanguage }}</td>
+            <td>{{ .Etymology }}</td>
+            <td>{{ StringJoin .Examples ", " }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+
+      <div class="c-pagination__controls">
+        {{ if .PrevUrl }}
+        <a class="c-pagination__btn" href="{{ .PrevUrl }}">Previous</a>
+        {{end}}
+
+        <span class="c-pagination__pagenum">
+          {{ .CurrentPage }} / {{ .MaxPage}}
+        </span>
+
+        {{ if .NextUrl }}
+        <a class="c-pagination__btn" href="{{ .NextUrl }}">Next</a>
+        {{end}}
+      </div>
+      {{ else }}
+      <p>No search results found</p>
+      {{ end }}
+    </div>
+    <footer className="c-footer">
+      <p>
+        Thanks to the Wikipedia pages for Latin and Greek roots
+        <a
+          href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/A-G"
+        >
+          A-G </a
+        >,
+        <a
+          href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/H-O"
+        >
+          H-O </a
+        >,
+        <a
+          href="https://en.wikipedia.org/wiki/List_of_Greek_and_Latin_roots_in_English/P-Z"
+        >
+          P-Z
+        </a>
+      </p>
+      <p className="row u-center-text">
+        Built with <abbr title="love">♥</abbr> by
+        <a href="https://github.com/joeyciechanowicz/latin-greek-roots"
+          >Joey Ciechanowicz</a
+        >. Feedback
+        <a href="https://github.com/joeyciechanowicz/latin-greek-roots/issues"
+          >welcome</a
+        >.
+      </p>
+    </footer>
+
+    <script src="https://getinsights.io/static/js/insights.js"></script>
+  </body>
+</html>

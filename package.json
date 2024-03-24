@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node --import @swc-node/register/esm-register src/index.ts",
-    "dev": "nodemon  --exec 'node --import @swc-node/register/esm-register src/index.ts'",
+    "dev": "nodemon  --exec 'node --import @swc-node/register/esm-register src/index-unetworking.ts'",
+    "dev:express": "nodemon  --exec 'node --import @swc-node/register/esm-register src/index-express.ts'",
     "extract-data": "ts-node extract-wikipedia-data.ts",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -31,9 +32,11 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@sifrr/server": "^0.0.9",
     "express": "^4.18.3",
     "insights-js": "^1.2.11",
-    "mikado": "^0.8.329"
+    "mikado": "^0.8.329",
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.43.0"
   },
   "engines": {
     "node": ">=20"
