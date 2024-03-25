@@ -31,7 +31,7 @@ it("they resolve to the same on page 5", () => {
   // expect(buffer).toEqual(base);
 });
 
-it.skip("renders jsx", () => {
+it("renders jsx", () => {
   const result = renderJsx({
     currentPage: 0,
     query: "some-query",

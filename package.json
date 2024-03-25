@@ -4,7 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "node --import @swc-node/register/esm-register src/index.ts",
+    "start": "NODE_ENV=production node --import @swc-node/register/esm-register src/index-unetworking.ts",
+    "start:bun": "NODE_ENV=production bun src/index-unetworking.ts",
     "dev": "nodemon  --exec 'node --import @swc-node/register/esm-register src/index-unetworking.ts'",
     "dev:express": "nodemon  --exec 'node --import @swc-node/register/esm-register src/index-express.ts'",
     "extract-data": "ts-node extract-wikipedia-data.ts",

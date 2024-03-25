@@ -54,6 +54,7 @@ func main() {
 
 	app := fiber.New(fiber.Config{
 		Views: engine,
+		// Prefork: true,
 	})
 
 	app.Static("/assets", "./src/assets")

@@ -1,3 +1,5 @@
+import { Row } from "../types";
+
 const React = {
   createElement(type: string, props, children) {
     console.log("createElement", props, children);
