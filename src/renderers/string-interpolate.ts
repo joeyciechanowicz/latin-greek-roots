@@ -5,7 +5,8 @@ import { nextUrl, prevUrl } from "./utils";
 export const renderStringInterpolate: RenderFunc = ({
   currentPage,
   query,
-  rows,
+  rowsSlice,
+  maxPage,
 }) => {
   const searchBox = `
       <header class="c-header">
@@ -26,7 +27,7 @@ export const renderStringInterpolate: RenderFunc = ({
 
   const table = `
     ${
-      rows.length === 0
+      rowsSlice.length === 0
         ? "<p>No search results found</p>"
         : `
       <table>
@@ -39,11 +40,7 @@ export const renderStringInterpolate: RenderFunc = ({
             <th scope="col">Examples</th>
           </tr>
         </thead>
-        ${rows
-          .slice(
-            currentPage * ROWS_PER_PAGE,
-            (currentPage + 1) * ROWS_PER_PAGE - 1
-          )
+        ${rowsSlice
           .map(
             (row) => `<tr>
               <td>${row.roots}</td>
@@ -68,10 +65,10 @@ export const renderStringInterpolate: RenderFunc = ({
                 : ""
             }
         <span class="c-pagination__pagenum">
-          ${currentPage + 1} / ${Math.ceil(rows.length / ROWS_PER_PAGE)}
+          ${currentPage + 1} / ${maxPage}
         </span>
         ${
-          currentPage < Math.floor(rows.length / ROWS_PER_PAGE)
+          currentPage < maxPage
             ? `<a class="c-pagination__btn" href="${nextUrl(
                 currentPage,
                 query

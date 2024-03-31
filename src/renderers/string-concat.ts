@@ -5,7 +5,8 @@ import { nextUrl, prevUrl } from "./utils";
 export const renderStringConcat: RenderFunc = ({
   currentPage,
   query,
-  rows,
+  rowsSlice,
+  maxPage,
 }) => {
   const searchBox =
     `
@@ -27,7 +28,7 @@ export const renderStringConcat: RenderFunc = ({
         </form>
       </header>`;
 
-  if (rows.length === 0) {
+  if (rowsSlice.length === 0) {
     return header + searchBox + "<p>No search results found</p>" + footer;
   }
 
@@ -42,12 +43,8 @@ export const renderStringConcat: RenderFunc = ({
           </tr>
         </thead>`;
 
-  for (
-    let i = currentPage * ROWS_PER_PAGE;
-    i < (currentPage + 1) * ROWS_PER_PAGE - 1 && i < rows.length;
-    i++
-  ) {
-    const row = rows[i];
+  for (let i = 0; i < rowsSlice.length; i++) {
+    const row = rowsSlice[i];
     table +=
       `<tr>
             <td>` +
@@ -83,10 +80,10 @@ export const renderStringConcat: RenderFunc = ({
     '<span class="c-pagination__pagenum">' +
     (currentPage + 1) +
     "/" +
-    Math.ceil(rows.length / ROWS_PER_PAGE) +
+    maxPage +
     "</span>";
 
-  if (currentPage < Math.floor(rows.length / ROWS_PER_PAGE)) {
+  if (currentPage < maxPage - 1) {
     table +=
       '<a class="c-pagination__btn" href="' +
       nextUrl(currentPage, query) +

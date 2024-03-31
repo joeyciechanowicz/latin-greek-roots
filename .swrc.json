@@ -5,6 +5,12 @@
         },
         "parser": {
           "jsx": true
+        },
+        "transform": {
+          "react": {
+            "runtime": "automatic",
+            "runtime": "foot"
+          }
         }
       }
 }

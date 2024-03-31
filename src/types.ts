@@ -14,11 +14,12 @@ export interface Row {
   meaning: string;
   originLanguage: "Latin" | "Greek" | string;
   etymology: string;
-  examples: string[];
+  examples: string;
 }
 
 export type RenderFunc = (args: {
   currentPage: number;
   query: string;
-  rows: Row[];
+  maxPage: number;
+  rowsSlice: Row[];
 }) => string;

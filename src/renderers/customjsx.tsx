@@ -1,21 +1,23 @@
-import { Row } from "../types";
+import { RenderFunc, Row } from "../types";
 
 const React = {
-  createElement(type: string, props, children) {
-    console.log("createElement", props, children);
-    // return {
-    //   type,
-    //   props,
-    //   children,
-    // };
-    let html = "<" + type + ">";
+  createElement(
+    type: string | Function,
+    props: Record<string, unknown>,
+    ...children: unknown[]
+  ) {
+    console.log("createElement", { type, props, children });
 
-    for (const [key, value] of props) {
+    if (typeof type === "function") {
+      const result = type(props);
     }
+
+    // for (const [key, value] in props) {
+    // }
   },
 };
-``;
-const Comp = (currentPage: number, query: string, rows: Row[]) => {
+
+const Header = ({ query }: { query: string }) => {
   return (
     <header class="c-header">
       <form action="/search" method="get">
@@ -35,8 +37,26 @@ const Comp = (currentPage: number, query: string, rows: Row[]) => {
   );
 };
 
-export const renderJsx: RenderFunc = ({ currentPage, query, rows }) => {
-  const objModel = Comp(currentPage, query, rows);
+const App = (currentPage: number, query: string, rows: Row[]) => {
+  return (
+    <>
+      <Header query={query} />
+      {rows.map((x) => (
+        <span>
+          {x.roots.join(", ")} - {x.meaning}
+        </span>
+      ))}
+    </>
+  );
+};
 
-  return objModel;
+function renderToString(jsx: any): string {
+  console.log("renderToString", jsx);
+  return "uh oh";
+}
+
+export const renderJsx: RenderFunc = ({ currentPage, query, rows }) => {
+  return renderToString(
+    <App currentPage={currentPage} query={query} rows={rows} />
+  );
 };

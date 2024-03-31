@@ -1,13 +1,17 @@
 import { rows } from "../search";
+import { ROWS_PER_PAGE } from "../types";
 import { renderJsx } from "./customjsx";
 import { renderStringConcat } from "./string-concat";
 import { renderStringInterpolate } from "./string-interpolate";
 
 it("they resolve to the same", () => {
+  const rowsSlice = rows.slice(0, ROWS_PER_PAGE);
+  const maxPage = Math.floor(rows.length / ROWS_PER_PAGE);
   const args = {
     currentPage: 0,
     query: "some-query",
-    rows,
+    rowsSlice,
+    maxPages: maxPage,
   };
   const base = renderStringInterpolate(args).replace(/\n|\s+/g, "");
 
@@ -35,7 +39,7 @@ it("renders jsx", () => {
   const result = renderJsx({
     currentPage: 0,
     query: "some-query",
-    rows,
+    rows: rows.slice(0, 2),
   });
 
   expect(result).toMatchInlineSnapshot(`

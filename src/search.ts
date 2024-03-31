@@ -14,6 +14,10 @@ const trieJson = JSON.parse(readFileSync(dir + "/trie.json").toString());
 
 export const trie = trieJson as TrieNode;
 export const rows = rowsJson as Row[];
+rows.forEach((row) => {
+  // @ts-expect-error
+  row.examples = row.examples.join(", ");
+});
 
 const walk = (set: Set<number>, node: TrieNode): void => {
   if (node.words.length > 0) {

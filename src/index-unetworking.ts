@@ -6,6 +6,8 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { renderStringConcat } from "./renderers/string-concat";
 import { rows as allRows, search } from "./search";
+import { renderJsx } from "./renderers/customjsx";
+import { ROWS_PER_PAGE } from "./types";
 
 const filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(filename);
@@ -31,7 +33,11 @@ const renderPaginated = (page: number) => {
   return renderStringConcat({
     currentPage: page,
     query: "",
-    rows: allRows,
+    maxPage: Math.ceil(allRows.length / ROWS_PER_PAGE),
+    rowsSlice: allRows.slice(
+      page * ROWS_PER_PAGE,
+      (page + 1) * ROWS_PER_PAGE - 1
+    ),
   });
 };
 
@@ -40,7 +46,11 @@ const renderSearch = (page: number, query: string) => {
   return renderStringConcat({
     currentPage: page,
     query,
-    rows: searchRows,
+    rowsSlice: searchRows.slice(
+      page * ROWS_PER_PAGE,
+      (page + 1) * ROWS_PER_PAGE - 1
+    ),
+    maxPage: Math.ceil(searchRows.length / ROWS_PER_PAGE),
   });
 };
 
@@ -67,6 +77,12 @@ app.get("/search", (res, req) => {
   res
     .writeHeader("content-type", "html")
     .end(renderSearch(pageNum - 1, searchTerm));
+});
+
+app.get("/jsx", (res, req) => {
+  res
+    .writeHeader("content-type", "html")
+    .end(renderJsx({ currentPage: 0, query: "", rows: allRows.slice(0, 50) }));
 });
 
 app.get("/:page?", (res, req) => {
